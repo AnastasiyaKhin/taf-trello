@@ -1,3 +1,5 @@
+package ui;
+
 import lombok.extern.log4j.Log4j2;
 import model.User;
 import steps.LoginStep;

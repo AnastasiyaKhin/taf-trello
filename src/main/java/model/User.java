@@ -2,12 +2,14 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import util.ConfigEnum;
+import util.ConfigReader;
 
 @Getter
 @Setter
 public class User {
-    private static final String EMAIL = "oanastasia058@gmail.com";
-    private static final String PASSWORD = ".5aKAVDh!KCXQnD";
+    private static final String EMAIL = ConfigReader.getValue(ConfigEnum.EMAIL);
+    private static final String PASSWORD = ConfigReader.getValue(ConfigEnum.PASSWORD);
     private String email;
     private String password;
 

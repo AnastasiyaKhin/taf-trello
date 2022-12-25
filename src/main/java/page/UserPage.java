@@ -99,7 +99,7 @@ public class UserPage extends BasePage {
     public UserPage addCardDescription(String description) {
         Waiters.waitForVisibilityOfElement(fieldCardDescription);
         fieldCardDescription.sendKeys(description);
-        log.info(String.format("Input details in exist card - %s",fieldCardDescription));
+        log.info(String.format("Input details in exist card - %s",description));
         return this;
     }
 
@@ -138,7 +138,7 @@ public class UserPage extends BasePage {
     public UserPage addCommentOnCard(String comment) {
         Waiters.waitForVisibilityOfElement(fieldCommentCard);
         fieldCommentCard.sendKeys(comment);
-        log.info(String.format("Input comment in existent card - %s",fieldCommentCard));
+        log.info(String.format("Input comment in existent card - %s",comment));
         return this;
     }
 

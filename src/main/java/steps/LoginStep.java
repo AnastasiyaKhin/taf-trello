@@ -4,10 +4,9 @@ import model.User;
 import page.LoginPage;
 
 public class LoginStep extends LoginPage {
-    LoginPage loginPage = new LoginPage();
 
     public void logIn(User user) {
-        loginPage.clickLoginButton()
+                clickLoginButton()
                 .inputEmail(user.getEmail())
                 .confirmEmail()
                 .inputPassword(user.getPassword())
@@ -18,11 +17,11 @@ public class LoginStep extends LoginPage {
     }
 
     public String loginErrorMessagePassword() {
-        return loginPage.getErrorMessagePassword();
+        return getErrorMessagePassword();
     }
 
     public String loginIncorrectPasswordMessage() {
-        return loginPage.getMessageIncorrectPassword();
+        return getMessageIncorrectPassword();
     }
 }
 

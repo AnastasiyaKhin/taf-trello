@@ -3,14 +3,14 @@ package steps;
 import page.UserPage;
 
 public class UserPageStep extends UserPage {
-    UserPage userPage = new UserPage();
-    public void createBoard(String titleBoard){
-        userPage.createNewBoard()
+    public void createBoard(String titleBoard) {
+        createNewBoard()
                 .addBoardTitle(titleBoard)
                 .confirmCreateBoard();
     }
-    public void createCard(String titleCard,String description){
-        userPage.addCardTitle(titleCard)
+
+    public void createCard(String titleCard, String description) {
+        addCardTitle(titleCard)
                 .addCard()
                 .changeCard()
                 .addCardDescription(description)
@@ -18,20 +18,21 @@ public class UserPageStep extends UserPage {
                 .closeCard();
     }
 
-    public void refactorCardOnBoard(String comment){
-        userPage.clickExistentCard()
+    public void refactorCardOnBoard(String comment) {
+        clickExistentCard()
                 .addCommentOnCard(comment)
                 .clickSaveComment()
                 .closeCard();
     }
 
-    public void closeCardAfterRefactor(){
-        userPage.closeCard();
+    public void closeCardAfterRefactor() {
+        closeCard();
     }
+
     public void deleteBoard() {
 //        userPage.clickExistentBoard()
         if (isBoardExist()) {
-            userPage.clickOnActiveBoard()
+            clickOnActiveBoard()
                     .clickMenuForDelete()
                     .clickCloseBoard()
                     .clickConfirmClose()
@@ -39,15 +40,23 @@ public class UserPageStep extends UserPage {
                     .clickConfirmDelete();
         }
     }
-    public String getTitleBoard(){
+
+    public String getTitleBoard() {
         return getActualTitleBoard();
     }
-    public String getTitleCard(){
+
+    public String getTitleCard() {
         return getActualTitleCard();
     }
-    public String getCommentFromCard(){
-        userPage.clickExistentCard();
+
+    public String getCommentFromCard() {
+        clickExistentCard();
         return getComment();
+    }
+
+    public boolean isActualBoardExist() {
+        isBoardExist();
+        return false;
     }
 }
 

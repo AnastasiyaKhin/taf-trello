@@ -1,7 +1,6 @@
 package page;
 
 import lombok.extern.log4j.Log4j2;
-import model.User;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import waiters.Waiters;
@@ -25,7 +24,6 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//div[@title='Anastasiya (oanastasia058)']")
     private WebElement userName;
 
-    //    public final String ERROR_MESSAGE_PASSWORD = "Enter your password"; // использую сразу в testLoginEmptyField
     public final String MESSAGE_INCORRECT_PASSWORD = "Incorrect email address and / or password. If you recently migrated your Trello account to an Atlassian account, you will need to use your Atlassian account password. Alternatively, you can get help logging in.";
 
     public LoginPage clickLoginButton() {
