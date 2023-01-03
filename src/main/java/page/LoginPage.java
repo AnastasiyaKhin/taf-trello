@@ -21,10 +21,8 @@ public class LoginPage extends BasePage {
     private WebElement msgErrorPasswd;
     @FindBy(id = "login-error")
     private WebElement msgIncorrectPasswd;
-    @FindBy(xpath = "//div[@title='Anastasiya (oanastasia058)']")//сделать универсальным //button[@data-testid='header-member-menu-button']/div
+    @FindBy(xpath = "//button[@data-testid='header-member-menu-button']/div")//div[@title='Anastasiya (oanastasia058)']
     private WebElement userName;
-
-    public final String MESSAGE_INCORRECT_PASSWORD = "Incorrect email address and / or password. If you recently migrated your Trello account to an Atlassian account, you will need to use your Atlassian account password. Alternatively, you can get help logging in.";
 
     public LoginPage clickLoginButton() {
         loginBtn.click();

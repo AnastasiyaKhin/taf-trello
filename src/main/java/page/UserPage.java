@@ -52,10 +52,6 @@ public class UserPage extends BasePage {
     @FindBy(xpath = "//button[@data-testid='close-board-delete-board-confirm-button']")
     private WebElement confirmDeleteBtn;
 
-//    public UserPage() {
-//        super();
-//    }
-
     public UserPage createNewBoard() {
         Waiters.waitForElementToBeClickable(createNewBoardBtn);
         createNewBoardBtn.click();

@@ -5,7 +5,6 @@ import model.User;
 import org.testng.Assert;
 import steps.LoginStep;
 import org.testng.annotations.Test;
-import ui.BaseTest;
 
 @Log4j2
 public class LoginPositiveTest extends BaseTest {
