@@ -30,7 +30,6 @@ public class UserPageStep extends UserPage {
     }
 
     public void deleteBoard() {
-//        userPage.clickExistentBoard()
         if (isBoardExist()) {
             clickOnActiveBoard()
                     .clickMenuForDelete()

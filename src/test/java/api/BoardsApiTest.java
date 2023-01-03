@@ -1,88 +1,71 @@
 package api;
 
+import io.restassured.response.Response;
+import model.ApiUser;
+import model.Board;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import util.ConfigEnum;
-import util.ConfigReader;
-
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-
+import steps.ApiSteps;
 
 public class BoardsApiTest {
-    private final String apiKey = ConfigReader.getValue(ConfigEnum.API_KEY);
-    private final String apiToken = ConfigReader.getValue(ConfigEnum.API_TOKEN);
-    private final String endPoint = ConfigReader.getValue(ConfigEnum.API_URL);
+    private ApiSteps apiSteps;
+    private Response response;
+    private Response responseUpdate;
+    private Board board;
+    private ApiUser author = new ApiUser();
     private String title = "Test";
 
     @Test
-    void testCreateBoard() {
+    public void testCreateBoard() {
+        apiSteps = new ApiSteps();
+        response = apiSteps.createBoard(author, title);
+        board = response.as(Board.class);
 
-        given()
-                .queryParam("name",title)
-                .queryParam("key",apiKey)
-                .queryParam("token",apiToken)
-                .header("Content-type", "application/json")
-        .when()
-                .log().all()
-                .post(endPoint)
-        .then()
-                .log().all()
-                .statusCode(200);
-
+        Assert.assertEquals(response.statusCode(), 200);
     }
+
     @Test
-    void testGetBoard(){
-//        String endPoint = "https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken"; Это из документации!!!
-        String id = "63a72633758c7c01e1115678"; // как достать id из теста выше???? (пока взяла из респонса теста createBoard)
+    public void testGetBoard() {
+        apiSteps = new ApiSteps();
+        response = apiSteps.createBoard(author, title);
+        board = response.as(Board.class);
 
-        given()
-                .queryParam("key",apiKey)
-                .queryParam("token",apiToken)
-                .header("Content-type", "application/json")
-        .when()
-                .log().all()
-                .get(endPoint + id)
+        apiSteps.getBoard(author, board);
 
-        .then()
-                .log().all()
-                .statusCode(200)
-                .body("name",equalTo(title));
-
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertEquals(board.getName(), title);
     }
+
     @Test
-    void testUpdateBoard(){
-//        String endPoint = "https://api.trello.com/1/boards/{id}?key=APIKey&token=APIToken"; Это из документации
-        String id = "63a72633758c7c01e1115678"; // как достать id из теста выше???? (пока взяла из респонса теста createBoard)
+    public void testUpdateBoard() {
         String newTitle = "Update Board";
         String requestBody = String.format("{\"name\":\"%s\"}", newTitle);
 
-        given()
-                .queryParam("key",apiKey)
-                .queryParam("token",apiToken)
-                .header("Content-type", "application/json")
-                .and()
-                .body(requestBody)
-        .when()
-                .log().all()
-                .put(endPoint + id)
-        .then()
-                .log().all()
-                .statusCode(200)
-                .body("name",equalTo(newTitle));
+        apiSteps = new ApiSteps();
+        response = apiSteps.createBoard(author, title);
+        board = response.as(Board.class);
+
+        responseUpdate = apiSteps.updateBoard(author, requestBody, board);
+        Board updateBoard = responseUpdate.as(Board.class);
+
+        Assert.assertEquals(responseUpdate.statusCode(), 200);
+        Assert.assertEquals(updateBoard.getName(), newTitle);
     }
+
     @Test
-    void testDeleteBoard(){
-        String id = "63a72633758c7c01e1115678"; // как достать id из теста выше???? (пока взяла из респонса теста createBoard)
-        given()
-                .queryParam("key",apiKey)
-                .queryParam("token",apiToken)
-                .header("Content-type", "application/json")
-        .when()
-                .log().all()
-                .delete(endPoint + id)
-        .then()
-                .log().all()
-                .statusCode(200);
+    public void testDeleteBoard() {
+        apiSteps = new ApiSteps();
+        response = apiSteps.createBoard(author, title);
+        board = response.as(Board.class);
+        apiSteps.deleteBoard(author, board);
+
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertNull(board._value, "Board is not delete");
+    }
+
+    @AfterMethod
+    public void deleteBoard() {
+        apiSteps.deleteBoard(author, board);
     }
 }
