@@ -3,6 +3,7 @@ package driver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Driver {
     private static WebDriver driver;
@@ -13,7 +14,9 @@ public class Driver {
     public static WebDriver getInstance() {
         if (driver == null) {
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            ChromeOptions opt = new ChromeOptions();
+            opt.addArguments("−−lang=en-US");
+            driver = new ChromeDriver(opt);
             driver.manage().window().maximize();
         }
         return driver;
