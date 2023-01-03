@@ -1,3 +1,4 @@
+package ui;
 
 import lombok.extern.log4j.Log4j2;
 import model.User;
@@ -54,7 +55,7 @@ public class BoardsTest extends BaseTest {
 
         userPageStep.refactorCardOnBoard(comment);
         Assert.assertEquals(userPageStep.getCommentFromCard(), comment,"Actual and expected description card are not the same"); // getCommentFromCard() иногда выбрасывает stale element , т.к. страница не успевает загрузится, ожидалка есть
-        //закрыть карточку, иначе доска не удалится @AfterMethod
+        //закрыть карточку, иначе доска не удалится при @AfterMethod
         userPageStep.closeCardAfterRefactor();
 
     }
@@ -66,10 +67,10 @@ public class BoardsTest extends BaseTest {
         userPageStep.createBoard(titleBoard);
         userPageStep.deleteBoard();
 
-        // ASSERT!!!!
+        Assert.assertFalse(userPageStep.isActualBoardExist(),"Board is not delete");
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void deleteBoard() {
         new UserPageStep().deleteBoard();
     }

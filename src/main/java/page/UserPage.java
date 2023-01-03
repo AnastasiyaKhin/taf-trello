@@ -21,8 +21,7 @@ public class UserPage extends BasePage {
     private WebElement labelCardTitle;
     @FindBy(xpath = "//input[@value='Add card']")
     private WebElement addCardBtn;
-    @FindBy(xpath = "//div[@class ='list-card-details js-card-details']")
-    //находит 1 элт только с полным название класса
+    @FindBy(xpath = "//div[@class ='list-card-details js-card-details']") //находит 1 элт только с полным название класса
     private WebElement cardDetailsBtn;
     @FindBy(xpath = "//div[@class='description-edit edit']//textarea[@placeholder='Add a more detailed description…']")
     private WebElement fieldCardDescription;
@@ -52,10 +51,6 @@ public class UserPage extends BasePage {
     private WebElement deleteBoardBtn;
     @FindBy(xpath = "//button[@data-testid='close-board-delete-board-confirm-button']")
     private WebElement confirmDeleteBtn;
-
-    public UserPage() {
-        super();
-    }
 
     public UserPage createNewBoard() {
         Waiters.waitForElementToBeClickable(createNewBoardBtn);
@@ -100,7 +95,7 @@ public class UserPage extends BasePage {
     public UserPage addCardDescription(String description) {
         Waiters.waitForVisibilityOfElement(fieldCardDescription);
         fieldCardDescription.sendKeys(description);
-        log.info(String.format("Input details in exist card - %s",fieldCardDescription));
+        log.info(String.format("Input details in exist card - %s",description));
         return this;
     }
 
@@ -139,7 +134,7 @@ public class UserPage extends BasePage {
     public UserPage addCommentOnCard(String comment) {
         Waiters.waitForVisibilityOfElement(fieldCommentCard);
         fieldCommentCard.sendKeys(comment);
-        log.info(String.format("Input comment in existent card - %s",fieldCommentCard));
+        log.info(String.format("Input comment in existent card - %s",comment));
         return this;
     }
 

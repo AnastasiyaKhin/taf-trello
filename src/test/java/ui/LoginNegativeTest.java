@@ -1,3 +1,5 @@
+package ui;
+
 import lombok.extern.log4j.Log4j2;
 import model.User;
 import steps.LoginStep;
@@ -44,7 +46,7 @@ public class LoginNegativeTest extends BaseTest {
 
         loginStep.logIn(user);
 
-        Assert.assertEquals(loginStep.loginIncorrectPasswordMessage(), expectedIncorrectPasswordMessage,"Password must not contains @");
+        Assert.assertEquals(loginStep.loginIncorrectPasswordMessage(), expectedIncorrectPasswordMessage,"Password mustn't contains @");
 
     }
 }
