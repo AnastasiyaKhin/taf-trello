@@ -1,11 +1,11 @@
-package steps;
+package by.itacdemy.anastasiyakhinevich.steps;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import model.ApiUser;
-import model.Board;
-import util.ConfigEnum;
-import util.ConfigReader;
+import by.itacdemy.anastasiyakhinevich.model.ApiUser;
+import by.itacdemy.anastasiyakhinevich.model.Board;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigEnum;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigReader;
 
 public class ApiSteps {
 
@@ -18,7 +18,7 @@ public class ApiSteps {
                 .queryParam("key", author.getApiKey())
                 .queryParam("token", author.getApiToken())
                 .header("Content-type", "application/json")
-                .when()
+            .when()
                 .log().all()
                 .post(END_POINT);
         response.then()
@@ -31,7 +31,7 @@ public class ApiSteps {
                 .queryParam("key", author.getApiKey())
                 .queryParam("token", author.getApiToken())
                 .header("Content-type", "application/json")
-                .when()
+            .when()
                 .log().all()
                 .delete(END_POINT + board.getId());
         response.then()
@@ -44,7 +44,7 @@ public class ApiSteps {
                 .queryParam("key", author.getApiKey())
                 .queryParam("token", author.getApiToken())
                 .header("Content-type", "application/json")
-                .when()
+            .when()
                 .log().all()
                 .get(END_POINT + board.getId());
         response.then()
@@ -59,7 +59,7 @@ public class ApiSteps {
                 .header("Content-type", "application/json")
                 .and()
                 .body(requestBody)
-                .when()
+            .when()
                 .log().all()
                 .put(END_POINT + board.getId());
         responseUpdate.then()

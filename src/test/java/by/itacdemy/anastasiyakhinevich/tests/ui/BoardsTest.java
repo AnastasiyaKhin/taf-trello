@@ -1,10 +1,10 @@
-package ui;
+package by.itacdemy.anastasiyakhinevich.tests.ui;
 
 import lombok.extern.log4j.Log4j2;
-import model.User;
+import by.itacdemy.anastasiyakhinevich.model.User;
 import org.testng.annotations.AfterMethod;
-import steps.LoginStep;
-import steps.UserPageStep;
+import by.itacdemy.anastasiyakhinevich.steps.LoginStep;
+import by.itacdemy.anastasiyakhinevich.steps.UserPageStep;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -32,18 +32,16 @@ public class BoardsTest extends BaseTest {
         userPageStep.createBoard(titleBoard);
 
         Assert.assertEquals(userPageStep.getTitleBoard(), titleBoard,"Actual and expected title board are not the same");
-
     }
 
     @Test
     public void testBoardWithCard() {
         log.info("Test create board with card");
         userPageStep = new UserPageStep();
-
         userPageStep.createBoard(titleBoard);
         userPageStep.createCard(titleCard, descriptionCard);
-        Assert.assertEquals(userPageStep.getTitleCard(), titleCard,"Actual and expected title card are not the same");
 
+        Assert.assertEquals(userPageStep.getTitleCard(), titleCard,"Actual and expected title card are not the same");
     }
 
     @Test
@@ -52,12 +50,11 @@ public class BoardsTest extends BaseTest {
         userPageStep = new UserPageStep();
         userPageStep.createBoard(titleBoard);
         userPageStep.createCard(titleCard, descriptionCard);
-
         userPageStep.refactorCardOnBoard(comment);
-        Assert.assertEquals(userPageStep.getCommentFromCard(), comment,"Actual and expected description card are not the same"); // getCommentFromCard() иногда выбрасывает stale element , т.к. страница не успевает загрузится, ожидалка есть
-        //закрыть карточку, иначе доска не удалится при @AfterMethod
-        userPageStep.closeCardAfterRefactor();
 
+        Assert.assertEquals(userPageStep.getCommentFromCard(), comment,"Actual and expected description card are not the same");
+
+        userPageStep.closeCardAfterRefactor();
     }
 
     @Test

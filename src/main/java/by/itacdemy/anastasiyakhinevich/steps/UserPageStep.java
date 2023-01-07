@@ -1,6 +1,6 @@
-package steps;
+package by.itacdemy.anastasiyakhinevich.steps;
 
-import page.UserPage;
+import by.itacdemy.anastasiyakhinevich.page.UserPage;
 
 public class UserPageStep extends UserPage {
     public void createBoard(String titleBoard) {

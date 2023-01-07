@@ -1,4 +1,4 @@
-package driver;
+package by.itacdemy.anastasiyakhinevich.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

@@ -1,4 +1,4 @@
-package util;
+package by.itacdemy.anastasiyakhinevich.utils;
 
 import net.andreinc.mockneat.MockNeat;
 import net.andreinc.mockneat.types.enums.StringType;

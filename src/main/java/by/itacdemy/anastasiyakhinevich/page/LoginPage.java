@@ -1,9 +1,9 @@
-package page;
+package by.itacdemy.anastasiyakhinevich.page;
 
+import by.itacdemy.anastasiyakhinevich.waiters.Waiters;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import waiters.Waiters;
 
 @Log4j2
 public class LoginPage extends BasePage {
@@ -21,7 +21,7 @@ public class LoginPage extends BasePage {
     private WebElement msgErrorPasswd;
     @FindBy(id = "login-error")
     private WebElement msgIncorrectPasswd;
-    @FindBy(xpath = "//button[@data-testid='header-member-menu-button']/div")//div[@title='Anastasiya (oanastasia058)']
+    @FindBy(xpath = "//button[@data-testid='header-member-menu-button']/div")
     private WebElement userName;
 
     public LoginPage clickLoginButton() {

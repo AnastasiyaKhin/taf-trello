@@ -1,7 +1,7 @@
-package steps;
+package by.itacdemy.anastasiyakhinevich.steps;
 
-import model.User;
-import page.LoginPage;
+import by.itacdemy.anastasiyakhinevich.model.User;
+import by.itacdemy.anastasiyakhinevich.page.LoginPage;
 
 public class LoginStep extends LoginPage {
 

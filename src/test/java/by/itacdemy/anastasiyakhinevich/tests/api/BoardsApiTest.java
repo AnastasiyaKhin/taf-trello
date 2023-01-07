@@ -1,12 +1,12 @@
-package api;
+package by.itacdemy.anastasiyakhinevich.tests.api;
 
 import io.restassured.response.Response;
-import model.ApiUser;
-import model.Board;
+import by.itacdemy.anastasiyakhinevich.model.ApiUser;
+import by.itacdemy.anastasiyakhinevich.model.Board;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import steps.ApiSteps;
+import by.itacdemy.anastasiyakhinevich.steps.ApiSteps;
 
 public class BoardsApiTest {
     private ApiSteps apiSteps;

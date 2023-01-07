@@ -1,6 +1,6 @@
-package waiters;
+package by.itacdemy.anastasiyakhinevich.waiters;
 
-import driver.Driver;
+import by.itacdemy.anastasiyakhinevich.driver.Driver;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
