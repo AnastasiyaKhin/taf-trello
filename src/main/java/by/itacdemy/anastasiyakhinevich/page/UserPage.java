@@ -1,10 +1,10 @@
-package page;
+package by.itacdemy.anastasiyakhinevich.page;
 
+import by.itacdemy.anastasiyakhinevich.waiters.Waiters;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import waiters.Waiters;
 
 @Log4j2
 public class UserPage extends BasePage {
@@ -39,7 +39,7 @@ public class UserPage extends BasePage {
     private WebElement saveCommentBtn;
     @FindBy(xpath = "//div[contains(@class,'js-list-actions')]//div[@class = 'current-comment js-friendly-links js-open-card']//p")
     private WebElement textActualComment;
-    @FindBy(xpath = "//a[contains(@aria-label,'currently active')]") // элнт с названием активной доски
+    @FindBy(xpath = "//a[contains(@aria-label,'currently active')]")
     private WebElement activeBoardBtn;
     @FindBy(xpath = "//button[@aria-label='Board actions menu']//span[@aria-label='OverflowMenuHorizontalIcon']")
     private WebElement deleteMenuBtn;

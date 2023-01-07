@@ -1,4 +1,4 @@
-package util;
+package by.itacdemy.anastasiyakhinevich.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

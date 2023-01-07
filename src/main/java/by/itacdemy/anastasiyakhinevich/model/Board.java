@@ -1,4 +1,4 @@
-package model;
+package by.itacdemy.anastasiyakhinevich.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

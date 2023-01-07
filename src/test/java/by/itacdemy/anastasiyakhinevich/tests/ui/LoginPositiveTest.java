@@ -1,9 +1,9 @@
-package ui;
+package by.itacdemy.anastasiyakhinevich.tests.ui;
 
 import lombok.extern.log4j.Log4j2;
-import model.User;
+import by.itacdemy.anastasiyakhinevich.model.User;
 import org.testng.Assert;
-import steps.LoginStep;
+import by.itacdemy.anastasiyakhinevich.steps.LoginStep;
 import org.testng.annotations.Test;
 
 @Log4j2

@@ -1,9 +1,9 @@
-package ui;
+package by.itacdemy.anastasiyakhinevich.tests.ui;
 
-import driver.Driver;
+import by.itacdemy.anastasiyakhinevich.driver.Driver;
 import org.testng.annotations.*;
-import util.ConfigEnum;
-import util.ConfigReader;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigEnum;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigReader;
 
 public class BaseTest {
 

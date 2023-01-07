@@ -1,12 +1,12 @@
-package ui;
+package by.itacdemy.anastasiyakhinevich.tests.ui;
 
 import lombok.extern.log4j.Log4j2;
-import model.User;
-import steps.LoginStep;
+import by.itacdemy.anastasiyakhinevich.model.User;
+import by.itacdemy.anastasiyakhinevich.steps.LoginStep;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import util.RandomData;
+import by.itacdemy.anastasiyakhinevich.utils.RandomData;
 
 @Log4j2
 public class LoginNegativeTest extends BaseTest {
