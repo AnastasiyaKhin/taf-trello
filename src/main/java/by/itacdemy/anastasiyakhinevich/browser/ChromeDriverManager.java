@@ -1,0 +1,21 @@
+package by.itacdemy.anastasiyakhinevich.browser;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
+
+public class ChromeDriverManager implements DriverManager {
+    private static ChromeOptions chromeOptions = new ChromeOptions();
+    @Override
+    public WebDriver createDriver(){
+        WebDriverManager.getInstance(CHROME).setup();
+        setChromeOptions();
+        return new ChromeDriver();
+    }
+    private static void setChromeOptions(){
+        chromeOptions.addArguments("--lang=en-US");
+    }
+}

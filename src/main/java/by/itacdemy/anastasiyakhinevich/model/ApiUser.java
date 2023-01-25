@@ -17,4 +17,5 @@ public class ApiUser {
         this.apiKey = API_KEY;
         this.apiToken = API_TOKEN;
     }
+
 }
