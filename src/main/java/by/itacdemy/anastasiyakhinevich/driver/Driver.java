@@ -9,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.Objects;
 
 public class Driver {
-    private static final DriverManagerType browser =
-            DriverManagerType.valueOf(ConfigReader.getValue(ConfigEnum.BROWSER).toUpperCase());
     private static WebDriver driver;
 
     private Driver() {
@@ -18,10 +16,21 @@ public class Driver {
 
     public static WebDriver getInstance() {
         if (Objects.isNull(driver)) {
-            driver = WebDriverFactory.installDriver(browser);
+            driver = WebDriverFactory.installDriver(getValueOfBrowser());
             driver.manage().window().maximize();
         }
         return driver;
+    }
+
+    private static DriverManagerType getValueOfBrowser() {
+        DriverManagerType browser = null;
+        if (System.getProperty("browser") == null) {
+            try {
+                browser = DriverManagerType.valueOf(ConfigReader.getValue(ConfigEnum.BROWSER).toUpperCase());
+            } catch (Exception e) {
+            }
+        }
+        return browser;
     }
 
     public static void closeDriver() {

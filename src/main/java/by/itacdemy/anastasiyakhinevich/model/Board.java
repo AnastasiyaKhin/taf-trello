@@ -7,10 +7,10 @@ import lombok.Getter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class Board {
+    public boolean closed;
+    public Object _value;
     private String id;
     private String name;
-    public boolean closed;
     private String url;
     private String shortUrl;
-    public Object _value;
 }

@@ -1,8 +1,6 @@
 package by.itacdemy.anastasiyakhinevich.browser;
 
 import io.github.bonigarcia.wdm.config.DriverManagerType;
-import io.github.bonigarcia.wdm.config.WebDriverManagerException;
-import io.github.bonigarcia.wdm.managers.OperaDriverManager;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverFactory {

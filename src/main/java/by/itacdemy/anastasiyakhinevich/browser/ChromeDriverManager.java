@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
 
 public class ChromeDriverManager implements DriverManager {
-    private ChromeOptions chromeOptions = new ChromeOptions();
+    private final ChromeOptions chromeOptions = new ChromeOptions();
 
     @Override
     public WebDriver createDriver() {

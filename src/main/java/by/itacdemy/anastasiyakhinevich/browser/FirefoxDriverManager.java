@@ -7,16 +7,17 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static io.github.bonigarcia.wdm.config.DriverManagerType.FIREFOX;
 
-public class FirefoxDriverManager implements DriverManager{
+public class FirefoxDriverManager implements DriverManager {
     private final FirefoxOptions firefoxOptions = new FirefoxOptions();
+
     @Override
-    public WebDriver createDriver(){
+    public WebDriver createDriver() {
         WebDriverManager.getInstance(FIREFOX).setup();
         setFirefoxOptions();
         return new FirefoxDriver(firefoxOptions);
     }
 
-    private void setFirefoxOptions(){
+    private void setFirefoxOptions() {
         firefoxOptions.addArguments("--lang=en-US");
     }
 }
