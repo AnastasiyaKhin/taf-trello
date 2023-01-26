@@ -8,14 +8,15 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import static io.github.bonigarcia.wdm.config.DriverManagerType.FIREFOX;
 
 public class FirefoxDriverManager implements DriverManager{
-    private static final FirefoxOptions firefoxOptions = new FirefoxOptions();
+    private final FirefoxOptions firefoxOptions = new FirefoxOptions();
     @Override
     public WebDriver createDriver(){
         WebDriverManager.getInstance(FIREFOX).setup();
         setFirefoxOptions();
-        return new FirefoxDriver();
+        return new FirefoxDriver(firefoxOptions);
     }
-    private static void setFirefoxOptions(){
+
+    private void setFirefoxOptions(){
         firefoxOptions.addArguments("--lang=en-US");
     }
 }

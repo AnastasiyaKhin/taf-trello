@@ -8,15 +8,15 @@ import org.openqa.selenium.edge.EdgeOptions;
 import static io.github.bonigarcia.wdm.config.DriverManagerType.EDGE;
 
 public class EdgeDriverManager implements DriverManager{
-    private static EdgeOptions edgeOptions = new EdgeOptions();
+    private EdgeOptions edgeOptions = new EdgeOptions();
 
     @Override
     public WebDriver createDriver() {
         WebDriverManager.getInstance(EDGE).setup();
         setEdgeOptions();
-        return new EdgeDriver();
+        return new EdgeDriver(edgeOptions);
     }
-    private static void setEdgeOptions(){
+    private void setEdgeOptions(){
         edgeOptions.addArguments("--lang=en-US");
     }
 }

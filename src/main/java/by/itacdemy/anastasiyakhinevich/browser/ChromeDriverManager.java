@@ -8,14 +8,16 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import static io.github.bonigarcia.wdm.config.DriverManagerType.CHROME;
 
 public class ChromeDriverManager implements DriverManager {
-    private static ChromeOptions chromeOptions = new ChromeOptions();
+    private ChromeOptions chromeOptions = new ChromeOptions();
+
     @Override
-    public WebDriver createDriver(){
+    public WebDriver createDriver() {
         WebDriverManager.getInstance(CHROME).setup();
         setChromeOptions();
-        return new ChromeDriver();
+        return new ChromeDriver(chromeOptions);
     }
-    private static void setChromeOptions(){
+
+    private void setChromeOptions() {
         chromeOptions.addArguments("--lang=en-US");
     }
 }

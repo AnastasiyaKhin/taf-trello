@@ -19,7 +19,7 @@ public class WebDriverFactory {
                 driver = new EdgeDriverManager().createDriver();
                 break;
             default:
-                throw new WebDriverManagerException("Unexpected browser");
+                driver = new ChromeDriverManager().createDriver();
         }
         return driver;
     }
