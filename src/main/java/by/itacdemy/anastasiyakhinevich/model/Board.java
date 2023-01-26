@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-
 public class Board {
     public boolean closed;
     public Object _value;

@@ -23,14 +23,10 @@ public class Driver {
     }
 
     private static DriverManagerType getValueOfBrowser() {
-        DriverManagerType browser = null;
-        if (System.getProperty("browser") == null) {
-            try {
-                browser = DriverManagerType.valueOf(ConfigReader.getValue(ConfigEnum.BROWSER).toUpperCase());
-            } catch (Exception e) {
-            }
-        }
-        return browser;
+        String browserSystem = System.getProperty("browser");
+        return Objects.isNull(browserSystem) ?
+                DriverManagerType.valueOf(ConfigReader.getValue(ConfigEnum.BROWSER).toUpperCase()) :
+                DriverManagerType.valueOf(browserSystem.toUpperCase());
     }
 
     public static void closeDriver() {
