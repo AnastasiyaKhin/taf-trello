@@ -1,9 +1,9 @@
 package by.itacdemy.anastasiyakhinevich.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import by.itacdemy.anastasiyakhinevich.utils.ConfigEnum;
 import by.itacdemy.anastasiyakhinevich.utils.ConfigReader;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

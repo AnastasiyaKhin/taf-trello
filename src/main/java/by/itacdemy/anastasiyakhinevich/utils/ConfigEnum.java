@@ -11,7 +11,8 @@ public enum ConfigEnum {
     BASE_URL("baseUrl"),
     API_URL("apiUrl"),
     API_KEY("apiKey"),
-    API_TOKEN("apiToken");
+    API_TOKEN("apiToken"),
+    BROWSER("browser");
 
     private String param;
 }

@@ -1,9 +1,12 @@
 package by.itacdemy.anastasiyakhinevich.driver;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import by.itacdemy.anastasiyakhinevich.browser.WebDriverFactory;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigEnum;
+import by.itacdemy.anastasiyakhinevich.utils.ConfigReader;
+import io.github.bonigarcia.wdm.config.DriverManagerType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.Objects;
 
 public class Driver {
     private static WebDriver driver;
@@ -12,14 +15,18 @@ public class Driver {
     }
 
     public static WebDriver getInstance() {
-        if (driver == null) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions opt = new ChromeOptions();
-            opt.addArguments("--lang=en-US");
-            driver = new ChromeDriver(opt);
+        if (Objects.isNull(driver)) {
+            driver = WebDriverFactory.installDriver(getValueOfBrowser());
             driver.manage().window().maximize();
         }
         return driver;
+    }
+
+    private static DriverManagerType getValueOfBrowser() {
+        String browserSystem = System.getProperty("browser");
+        return Objects.isNull(browserSystem) ?
+                DriverManagerType.valueOf(ConfigReader.getValue(ConfigEnum.BROWSER).toUpperCase()) :
+                DriverManagerType.valueOf(browserSystem.toUpperCase());
     }
 
     public static void closeDriver() {
