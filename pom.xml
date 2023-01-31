@@ -13,6 +13,7 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <browser>${browser}</browser>
+        <thread.count>2</thread.count>
         <encoding>UTF-8</encoding>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -115,12 +116,12 @@
                         </property>
                         <property>
                             <name>threadCount</name>
-                            <value>2</value>
+                            <value>${thread.count}</value>
                         </property>
                     </properties>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+<!--                    <suiteXmlFiles>-->
+<!--                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
                 </configuration>
             </plugin>
 

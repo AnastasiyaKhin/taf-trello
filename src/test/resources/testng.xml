@@ -4,5 +4,5 @@
         <packages>
             <package name="by.itacdemy.anastasiyakhinevich.tests.ui"></package>
         </packages>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

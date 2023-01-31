@@ -10,21 +10,21 @@ import java.util.Objects;
 
 public class Driver {
     private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
-    private static WebDriver driver;
 
     private Driver() {
     }
 
     public static WebDriver getInstance() {
-        WebDriver driver;
         if (Objects.isNull(getThreadLocalDriver())) {
-            driver = WebDriverFactory.installDriver(getValueOfBrowser());
+            WebDriver driver = WebDriverFactory.installDriver(getValueOfBrowser());
             threadLocalDriver.set(driver);
         }
-        return getThreadLocalDriver();
+        WebDriver driver = getThreadLocalDriver();
+        driver.manage().window().maximize();
+        return driver;
     }
 
-    public static WebDriver getThreadLocalDriver() {
+    private static WebDriver getThreadLocalDriver() {
         return threadLocalDriver.get();
     }
 
