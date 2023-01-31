@@ -131,11 +131,19 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M8</version>
                 <configuration>
-                    <systemPropertyVariables>
-                        <WSNSHELL_HOME>conf</WSNSHELL_HOME>
-                    </systemPropertyVariables>
-<!--                    <parallel>methods</parallel>-->
-<!--                    <threadCount>10</threadCount>-->
+                    <properties>
+                        <property>
+                            <name>parallel</name>
+                            <value>classes</value>
+                        </property>
+                        <property>
+                            <name>threadCount</name>
+                            <value>2</value>
+                        </property>
+                    </properties>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
 

@@ -9,15 +9,21 @@ public class WebDriverFactory {
         switch (type) {
             case CHROME:
                 driver = new ChromeDriverManager().createDriver();
+                driver.manage().window().maximize();
                 break;
             case FIREFOX:
                 driver = new FirefoxDriverManager().createDriver();
+                driver.manage().window().maximize();
+
                 break;
             case EDGE:
                 driver = new EdgeDriverManager().createDriver();
+                driver.manage().window().maximize();
+
                 break;
             default:
                 driver = new ChromeDriverManager().createDriver();
+                driver.manage().window().maximize();
         }
         return driver;
     }
