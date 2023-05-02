@@ -9,17 +9,23 @@ import org.openqa.selenium.WebDriver;
 import java.util.Objects;
 
 public class Driver {
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
 
     private Driver() {
     }
 
     public static WebDriver getInstance() {
-        if (Objects.isNull(driver)) {
-            driver = WebDriverFactory.installDriver(getValueOfBrowser());
-            driver.manage().window().maximize();
+        if (Objects.isNull(getThreadLocalDriver())) {
+            WebDriver driver = WebDriverFactory.installDriver(getValueOfBrowser());
+            threadLocalDriver.set(driver);
         }
+        WebDriver driver = getThreadLocalDriver();
+        driver.manage().window().maximize();
         return driver;
+    }
+
+    private static WebDriver getThreadLocalDriver() {
+        return threadLocalDriver.get();
     }
 
     private static DriverManagerType getValueOfBrowser() {
@@ -30,7 +36,7 @@ public class Driver {
     }
 
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        getInstance().quit();
+        threadLocalDriver.remove();
     }
 }

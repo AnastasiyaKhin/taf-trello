@@ -5,20 +5,20 @@ import org.openqa.selenium.WebDriver;
 
 public class WebDriverFactory {
     public static WebDriver installDriver(DriverManagerType type) {
-        WebDriver driver;
+        DriverManager driverManager;
         switch (type) {
             case CHROME:
-                driver = new ChromeDriverManager().createDriver();
+                driverManager = new ChromeDriverManager();
                 break;
             case FIREFOX:
-                driver = new FirefoxDriverManager().createDriver();
+                driverManager = new FirefoxDriverManager();
                 break;
             case EDGE:
-                driver = new EdgeDriverManager().createDriver();
+                driverManager = new EdgeDriverManager();
                 break;
             default:
-                driver = new ChromeDriverManager().createDriver();
+                driverManager = new ChromeDriverManager();
         }
-        return driver;
+        return driverManager.createDriver();
     }
 }
